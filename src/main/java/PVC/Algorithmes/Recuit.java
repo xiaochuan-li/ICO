@@ -7,12 +7,13 @@ import com.github.sh0nk.matplotlib4j.PythonExecutionException;
 
 import java.io.IOException;
 
-public class Tabou extends Algorithme {
-    public Tabou(Route actualRoute) {
+public class Recuit extends Algorithme {
+
+    public Recuit(Route actualRoute) {
         super(actualRoute);
     }
 
-    public Tabou(Route actualRoute, int it) {
+    public Recuit(Route actualRoute, int it) {
         super(actualRoute, it);
     }
 
@@ -30,6 +31,6 @@ public class Tabou extends Algorithme {
 
     private Route getMinRoute() {
         Voisin actualVoisin = new Voisin(this.getActualRoute());
-        return actualVoisin.getMinRoute(this.getT(), this.getActualRoute());
+        return actualVoisin.getRandomRoute();
     }
 }
