@@ -29,12 +29,12 @@ public abstract class Algorithme {
         this.iter = it;
     }
 
-    public static void main(String[] args) throws IOException, PythonExecutionException {
+    public static void main(String[] args) {
         CityData Data = new CityData(50);
         Route initRoute = new Route(Data.getCities());
     }
 
-    public void run() throws IOException, PythonExecutionException {
+    public void run() {
         ArrayList<Double> logger = new ArrayList<>();
 
         while (this.iter-- > 0) {
@@ -46,6 +46,10 @@ public abstract class Algorithme {
             }
         }
         this.lines.add(new Line(logger, "test"));
+
+    }
+
+    public void plot() throws IOException, PythonExecutionException {
         Plot display = new Plot(this.lines, "iterations", "distance", "Tabou");
         display.show();
     }

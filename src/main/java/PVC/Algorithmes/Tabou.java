@@ -1,22 +1,26 @@
 package PVC.Algorithmes;
 
 import PVC.Data.CityData;
+import PVC.Definitions.City;
 import PVC.Definitions.Route;
 import PVC.Definitions.Voisin;
-import com.github.sh0nk.matplotlib4j.PythonExecutionException;
 
-import java.io.IOException;
+import java.util.ArrayList;
 
 public class Tabou extends Algorithme {
     public Tabou(Route actualRoute) {
         super(actualRoute);
     }
 
+    public Tabou(ArrayList<City> cities) {
+        super(new Route(cities));
+    }
+
     public Tabou(Route actualRoute, int it) {
         super(actualRoute, it);
     }
 
-    public static void main(String[] args) throws IOException, PythonExecutionException {
+    public static void main(String[] args) {
         CityData Data = new CityData(50);
         Route initRoute = new Route(Data.getCities());
 
