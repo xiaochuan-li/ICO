@@ -32,6 +32,8 @@ public class TestAgent extends Agent {
         private Status status = Status.INIT;
         private int count = 0;
         private ArrayList<City> cities;
+        private Route initialRoute;
+        private Route bestRoute;
 
         public behave(ArrayList<City> cities) {
             this.cities = cities;
@@ -71,8 +73,7 @@ public class TestAgent extends Agent {
         }
 
         @Override
-        public int onEnd() {  //done()方法返回真时调用
-            // TODO 自动生成的方法存根
+        public int onEnd() {  //done()方法返回真时调
             myAgent.doDelete();
             System.out.println("finished");
             return super.onEnd();
@@ -81,15 +82,18 @@ public class TestAgent extends Agent {
         private void init() {
             // initialise
             this.algorithme = new Tabou(this.cities);
+            this.initialRoute = this.algorithme.getActualRoute();
+            this.bestRoute = this.algorithme.getBestRoute();
             System.out.println("Agent initializing, ready for calculating");
             this.status = Status.CALC;
         }
 
         private void calc() {
             // calculate
-            this.algorithme.run();
+            this.algorithme.runtest();
+            this.bestRoute = this.algorithme.getBestRoute();
             this.count++;
-            System.out.println(this.algorithme.getBestRoute().getTotalDistance());
+            System.out.println(this.bestRoute.getTotalDistance());
             System.out.println("Calculate finishing, ready for sending");
             this.status = Status.SEND;
         }
